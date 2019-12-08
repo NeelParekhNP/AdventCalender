@@ -61,13 +61,24 @@ public class AdventCalender {
             intCode.add(Integer.valueOf(num));
         }
 
-        for(int i=0; i<intCode.size(); i+=4){
-            int a;
-            int b;
+        for(int i=0; i<intCode.size()-1; i+=4){
+            int a = intCode.get(intCode.get(i+1));
+            int b = intCode.get(intCode.get(i+2));
             switch (intCode.get(i)){
                 case 1:
-                    a = intCode.get(intCode.get(i+1));
-                    b = intCode.get(intCode.get(i+2));
+                    intCode.set(intCode.get(i+3), (a+b));
+                    //System.out.println(a);
+                    //System.out.println(b);
+                    //System.out.println(a+b);
+                    break;
+
+                case 2:
+                    intCode.set(intCode.get(i+3), (a*b));
+                    break;
+
+                default:
+                    System.out.println("Answer: " + intCode.get(0));
+                    break;
             }
         }
     }
